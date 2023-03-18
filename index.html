@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Zdog Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!-- <link href="./static/styles/rsp.css" rel="stylesheet" /> -->
+		<!-- Favicons made on https://favicon.io/ -->
+		<!-- <link rel="icon" type="image/png" href="./static/favicon/favicon-32x32.png" sizes="32x32"/>
+		<link rel="icon" type="image/png" href="./static/favicon/favicon-16x16.png" sizes="16x16"/> -->
+		<style>
+			body {
+				background: #999;
+			}
+			canvas {
+				background: #fff;
+			}
+			.space {
+				background: #111;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<canvas class="demo2 space" width="600" height="600"></canvas>
+			<svg class="demo2-svg space" width="300" height="300"></svg>
+			<canvas class="demo2-fov" width="300" height="300"></canvas>
+			<canvas class="demo1-fov" width="300" height="300"></canvas>
+		</main>
+		<script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+		<script>
+			// Make a copy of the Zdog object because we'll be modifying one of them
+			window.originalZDog = window.Zdog;
+			delete window.Zdog;
+		</script>
+		<script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+		<script type="module">
+			import runDemo1 from './demo/demo1.js';
+			import runDemo2 from './demo/demo2.js';
+			import { applyFovPatch, Zdog } from '../src/index.js';
+
+			const fovZdog = applyFovPatch(window.Zdog);
+
+			setTimeout(() => {
+				// runDemo1(fovZdog, '.demo1-fov');
+				runDemo2(window.originalZDog, '.demo2');
+				runDemo2(window.originalZDog, '.demo2-svg');
+				runDemo2(fovZdog, '.demo2-fov');
+			}, 100);
+		</script>
+		<script type="module" src="./demo/demo1.js"></script>
+	</body>
+</html>

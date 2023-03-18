@@ -1,0 +1,31 @@
+{
+  "name": "rocket-dog",
+  "version": "0.1.0",
+  "description": "Zdog Extended",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "test:lint": "npx eslint .",
+    "test": "npm run test:lint",
+    "lintFix": "npx eslint . --fix",
+    "serve": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/rocket-boots/rocket-dog"
+  },
+  "keywords": [
+    "3D",
+    "JavaScript",
+    "Zdog"
+  ],
+  "author": "Luke Nickerson",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "rocket-boots-eslint": "github:rocket-boots/rocket-boots-eslint"
+  },
+  "dependencies": {
+    "zdog": "^1.1.3"
+  }
+}
